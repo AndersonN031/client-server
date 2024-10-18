@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { database } from "../secrets";
+import pool from "../lib/database";
 // Ajuste o caminho conforme necessário
 
 
@@ -8,13 +8,13 @@ export const findAllUsers = async (req: Request, res: Response) => {
     try {
         let result;
         if (email) {
-            result = await database.query(`
+            result = await pool.query(`
                 SELECT name, email 
                 FROM users 
                 WHERE email = $1
             `, [email]);
         } else {
-            result = await database.query(`
+            result = await pool.query(`
                 SELECT name, email 
                 FROM users
             `);

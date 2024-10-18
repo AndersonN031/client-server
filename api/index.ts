@@ -1,11 +1,9 @@
 import express, { Express, Request, Response } from 'express';
 import { PORT } from '../src/secrets';
 import rootRouter from '../src/routes';
-import { db } from '@vercel/postgres';
 import cors from 'cors';
 import { PrismaClient } from '@prisma/client';
-
-const database = db;
+import pool from '../src/lib/database'
 
 const app: Express = express();
 app.use(cors());
@@ -20,7 +18,7 @@ export const prismaClient = new PrismaClient({
 })
 
 app.listen(PORT, () => {
-    console.log('Servidor rodando em http://localhost:3000/api/user/user');
+    console.log('Servidor rodando em http://localhost:3000/api/list/user');
 })
 
-export { database };
+export { pool }
