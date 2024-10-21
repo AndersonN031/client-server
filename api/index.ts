@@ -16,7 +16,6 @@ export const prismaClient = new PrismaClient({
 
 export { pool }
 
-// Exporta a função que será utilizada pela Vercel
 export default (req: Request, res: Response) => {
     return app(req, res);
 };
