@@ -1,5 +1,5 @@
 import express, { Express, Request, Response } from 'express';
-import { PORT } from '../src/secrets';
+// import { PORT } from '../src/secrets';
 import rootRouter from '../src/routes';
 import cors from 'cors';
 import { PrismaClient } from '@prisma/client';
@@ -20,3 +20,8 @@ export { pool }
 export default (req: Request, res: Response) => {
     return app(req, res);
 };
+
+const PORT = 3000
+app.listen(PORT, () => {
+    console.log('Servidor rodando em http://localhost:3000/api/list/user')
+})
